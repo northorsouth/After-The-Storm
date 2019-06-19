@@ -23,7 +23,7 @@ public class Billboard : MonoBehaviour
     {
         Vector3 rot = transform.localEulerAngles;
 
-        rot.y = player.transform.localEulerAngles.y;
+        rot.y = player.transform.eulerAngles.y;
         
         transform.localEulerAngles = rot;
     }
