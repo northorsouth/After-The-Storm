@@ -24,6 +24,8 @@ public class Grab : MonoBehaviour
     {
         transform.parent = Camera.main.transform;
 
+        transform.rotation = transform.parent.rotation;
+
         if (rb)
             rb.isKinematic = true;
     }
