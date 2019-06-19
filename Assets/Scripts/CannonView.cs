@@ -21,6 +21,8 @@ public class CannonView : MonoBehaviour
         {
             cannonCamera.SetActive(false);
             playerCamera.SetActive(true);
+            playerCamera.tag = "MainCamera";
+            cannonCamera.tag = "Untagged";
         }
 
         if (cannonCamera.activeInHierarchy)
@@ -34,5 +36,7 @@ public class CannonView : MonoBehaviour
     {
         cannonCamera.SetActive(true);
         playerCamera.SetActive(false);
+        cannonCamera.tag = "MainCamera";
+        playerCamera.tag = "Untagged";
     }
 }

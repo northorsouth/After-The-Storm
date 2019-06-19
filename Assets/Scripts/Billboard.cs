@@ -9,8 +9,7 @@ public class Billboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (player == null)
-            player = Camera.main.transform;
+        
     }
 
     // Update is called once per frame
@@ -21,9 +20,14 @@ public class Billboard : MonoBehaviour
 
     void LateUpdate()
     {
+        Transform t = player;
+
+        if (t == null)
+            t = Camera.main.transform;
+        
         Vector3 rot = transform.localEulerAngles;
 
-        rot.y = player.transform.eulerAngles.y;
+        rot.y = t.eulerAngles.y;
         
         transform.localEulerAngles = rot;
     }
