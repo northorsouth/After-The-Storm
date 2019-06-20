@@ -25,8 +25,6 @@ public class MaterialCycle : MonoBehaviour
 
     public IEnumerator Cycle()
     {
-        Debug.Log("Frame");
-        
         rendy.material = frames[currentFrame];
 
         currentFrame++;

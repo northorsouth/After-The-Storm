@@ -14,9 +14,10 @@ public class CannonScript : MonoBehaviour
     public string winScene;
     public GameObject blackoutUI;
     public float timeToPause;
+    public AudioSource hiss;
     private bool locked = false;
     private bool loaded = false;
-    
+    private bool lit = false;
     
     // Start is called before the first frame update
     void Start()
@@ -61,12 +62,21 @@ public class CannonScript : MonoBehaviour
             SceneManager.LoadScene(failScene);
     }
 
+    public void LightFuse()
+    {
+        lit = true;
+        hiss.enabled = true;
+    }
+
     public void OnMouseDown()
     {
-        cannonCamera.SetActive(true);
-        playerCamera.SetActive(false);
-        cannonCamera.tag = "MainCamera";
-        playerCamera.tag = "Untagged";
-        locked = true;
+        if (lit)
+        {
+            cannonCamera.SetActive(true);
+            playerCamera.SetActive(false);
+            cannonCamera.tag = "MainCamera";
+            playerCamera.tag = "Untagged";
+            locked = true;
+        }
     }
 }
