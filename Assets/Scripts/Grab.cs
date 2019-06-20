@@ -6,6 +6,7 @@ public class Grab : MonoBehaviour
 {
     private Transform originalParent;
     private Rigidbody rb = null;
+    private bool grabbed = false;
     
     // Start is called before the first frame update
     void Start()
@@ -22,18 +23,25 @@ public class Grab : MonoBehaviour
 
     void OnMouseDown()
     {
-        transform.parent = Camera.main.transform;
+        if (!grabbed)
+        {
+            transform.parent = Camera.main.transform;
 
-        transform.rotation = transform.parent.rotation;
+            transform.rotation = transform.parent.rotation;
 
-        if (rb)
-            rb.isKinematic = true;
-    }
-
-    void OnMouseUp()
-    {
-        transform.parent = originalParent;
-        if (rb)
-            rb.isKinematic = false;
+            if (rb)
+                rb.isKinematic = true;
+            
+            grabbed = true;
+        }
+        
+        else
+        {
+            transform.parent = originalParent;
+            if (rb)
+                rb.isKinematic = false;
+            
+            grabbed = false;
+        }
     }
 }
