@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e222162ddb8d34547a133b673221b195, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 89201c81e2267044c96b35522570cafc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.29697776, g: 0.24607444, b: 0.23221657, a: 1}
+  m_IndirectSpecularColor: {r: 0.29685822, g: 0.24591172, b: 0.23192447, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 324280798}
   m_Layer: 0
   m_Name: Booze
-  m_TagString: Untagged
+  m_TagString: Booze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,7 +706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324280794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.449768, y: 12.392162, z: 19.900475}
+  m_LocalPosition: {x: -32.76, y: 6.95, z: 30.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 505195463}
@@ -2612,6 +2612,7 @@ GameObject:
   - component: {fileID: 1290094453}
   - component: {fileID: 1290094450}
   - component: {fileID: 1290094454}
+  - component: {fileID: 1290094455}
   m_Layer: 0
   m_Name: Monkey
   m_TagString: Untagged
@@ -2804,6 +2805,19 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3e22f8e7d0972b34fab301db91714941, type: 2}
   - {fileID: 2100000, guid: 4b2172d7a7784704286f8ee9a2f09a2b, type: 2}
   speed: 0.3
+--- !u!135 &1290094455
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290094448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.140868
+  m_Center: {x: -0.18699549, y: -0.00000056746063, z: -5.3086985e-16}
 --- !u!1 &1343335311
 GameObject:
   m_ObjectHideFlags: 0
