@@ -12,9 +12,11 @@ public class CannonScript : MonoBehaviour
     public float maxCorrectRot;
     public string failScene;
     public string winScene;
+    public GameObject blackoutUI;
+    public float timeToPause;
     private bool locked = false;
     private bool loaded = false;
-
+    
     
     // Start is called before the first frame update
     void Start()
@@ -44,11 +46,19 @@ public class CannonScript : MonoBehaviour
             while (rot < 0)
                 rot += 360;
             
-            if (rot >= minCorrectRot && rot <= maxCorrectRot)
-                SceneManager.LoadScene(winScene);
-            else
-                SceneManager.LoadScene(failScene);
+            StartCoroutine("EndGame", rot);
         }
+    }
+
+    private IEnumerator EndGame(float cannonPos)
+    {
+        blackoutUI.SetActive(true);
+        yield return new WaitForSeconds(timeToPause);
+        
+        if (cannonPos >= minCorrectRot && cannonPos <= maxCorrectRot)
+            SceneManager.LoadScene(winScene);
+        else
+            SceneManager.LoadScene(failScene);
     }
 
     public void OnMouseDown()
