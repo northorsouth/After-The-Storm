@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CannonView : MonoBehaviour
+public class CannonScript : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject cannonCamera;
     public float cannonRotationSpeed;
+    public float minCorrectRot;
+    public float maxCorrectRot;
+    public string failScene;
+    public string winScene;
+    private bool locked = false;
+    private bool loaded = false;
+
     
     // Start is called before the first frame update
     void Start()
@@ -17,18 +25,29 @@ public class CannonView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && cannonCamera.activeInHierarchy)
-        {
-            cannonCamera.SetActive(false);
-            playerCamera.SetActive(true);
-            playerCamera.tag = "MainCamera";
-            cannonCamera.tag = "Untagged";
-        }
-
         if (cannonCamera.activeInHierarchy)
         {
             cannonCamera.transform.Rotate(-Input.GetAxis("Mouse Y") * cannonRotationSpeed, 0f, 0f, Space.Self);
             cannonCamera.transform.Rotate(0f, Input.GetAxis("Mouse X") * cannonRotationSpeed, 0f, Space.World);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0) && locked)
+            loaded = true;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && loaded)
+        {
+            float rot = cannonCamera.transform.eulerAngles.y;
+
+            while (rot > 360)
+                rot -= 360;
+            
+            while (rot < 0)
+                rot += 360;
+            
+            if (rot >= minCorrectRot && rot <= maxCorrectRot)
+                SceneManager.LoadScene(winScene);
+            else
+                SceneManager.LoadScene(failScene);
         }
     }
 
@@ -38,5 +57,6 @@ public class CannonView : MonoBehaviour
         playerCamera.SetActive(false);
         cannonCamera.tag = "MainCamera";
         playerCamera.tag = "Untagged";
+        locked = true;
     }
 }
